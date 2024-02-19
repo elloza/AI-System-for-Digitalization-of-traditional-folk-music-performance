@@ -3,7 +3,7 @@ Artificial Intelligence system for digitalization of traditional folk music perf
 
 # Demo notebook
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/elloza/ITMA-classifier-paper/blob/main/demo/DemoTool.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Y7OBCpBdSHdldxV9XcQEeupNs4w2cAdX?usp=sharing#scrollTo=Jb7QdXc0-nqs)
 
 ## Description of the system
 
@@ -42,10 +42,9 @@ System description.
 If you find this repo useful in your research, please consider citing:
 
 ```
-@article{irish-genres-2024,
-  title={Identifying Irish traditional music genres using latent audio representations},
-  author={DIEGO M. JIMÉNEZ-BRAVO, ÁLVARO LOZANO MURCIEGO, JUAN JOSÉ
-NAVARRO-CÁCERES, MARÍA NAVARRO-CÁCERES, AND TREASA HARKIN,
+@article{folk-digitalization-tool-2024,
+  title={Artificial Intelligence system for digitalization of traditional folk music performances},
+  author={Álvaro Lozano Murciego, Diego M. Jiménez Bravo, Daniel Hernández de la Iglesia and Héctor Sánchez San Blas
   journal={},
   volume={},
   number={},
