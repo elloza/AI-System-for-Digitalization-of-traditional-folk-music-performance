@@ -9,6 +9,9 @@ __pycache__/
 # Music files
 *.wav
 *.mp3
+*.webm
+*.m4a
+*.temp.m4a
 
 output/audio/*.wav
 output/audio/*.mp3
