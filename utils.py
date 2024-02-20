@@ -9,8 +9,10 @@ from faster_whisper import WhisperModel
 
 
 # Youtube-dl template
+# Examples: https://gist.github.com/tazihad/030f23a4970c7d1cf1382e69eb1c24ff
 # CHANGE THIS TO USE youtube-dl in unix
 _RETRIEVE_AUDIO_CMD_TEMPLATE = '''youtube-dl -k -f "bestaudio/best" -ciw -x --extractor-retries 4 -v --audio-quality 0 --audio-format wav -o "{audio_name}.wav" {url}'''
+
 # Spleeter deezer template
 _SPLIT_AUDIO_CMD_TEMPLATE = '''spleeter separate -p spleeter:2stems -o output {audio_file_path}'''
 
@@ -18,7 +20,6 @@ _SPLIT_AUDIO_CMD_TEMPLATE = '''spleeter separate -p spleeter:2stems -o output {a
 #python -m pip install --no-cache-dir git+https://github.com/yt-dlp/yt-dlp.git@2023.07.06
 #ln -s $(which yt-dlp) /usr/local/bin/youtube-dl
 # apt-get install -y software-properties-common && sudo apt-get update && apt-get install -y ffmpeg
-
 def download_audio_of_video(url: str, audio_name: str = 'output') -> str:
     """F
     Download a video from a url and return the path
@@ -58,12 +59,16 @@ def download_audio_of_video(url: str, audio_name: str = 'output') -> str:
 # pip install spleeter
 def split_audio(audio_file_path):
 
-    # Get the output directory
-    output_dir = os.path.dirname(audio_file_path)
-
     # Extract file name with extension
     audio_filename_ext = os.path.basename(audio_file_path)
     audio_filename = os.path.splitext(audio_filename_ext)[0]
+
+    # Remove files in the output directory if they exist
+    if os.path.exists('output/{audio_filename}/vocals.wav'):
+        os.system(f'rm -r output/{audio_filename}/vocals.wav')
+        os.system(f'rm -r output/{audio_filename}/accompaniment.wav')
+    else:
+        print("The file does not exist")
 
     try:
         # Execute the command
@@ -97,11 +102,24 @@ def transcribe_vocals(audio_vocals_path):
 
     print("Detected language '%s' with probability %f" % (info.language, info.language_probability))
 
+    segments = list(segments)
+
     for segment in segments:
         print("[%.2fs -> %.2fs] %s" % (segment.start, segment.end, segment.text))
 
-    return list(segments), info
+    return segments, info
 
+# Function to generate the music score from the accompaniment
+def generate_music_score(accompaniment_path):
+    # TODO function to generate the music score from the accompaniment
+
+    # TODO generate the music score from the accompaniment wav file
+    
+    path_to_score = 'path_to_score'
+    path_to_midi = 'path_to_midi'
+    path_to_pdf = 'path_to_pdf'
+
+    return path_to_score, path_to_midi, path_to_pdf
 
 def run_cmd_sync(cmd, cwd=None, interactive=False, timeout=None):
     """Runs a console command synchronously and returns the results.
