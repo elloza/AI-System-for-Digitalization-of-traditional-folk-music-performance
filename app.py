@@ -2,6 +2,8 @@ import datetime
 import streamlit as st
 import json
 from streamlit_player import st_player
+from streamlit_pdf_viewer import pdf_viewer
+
 # import util functions
 from utils import download_audio_of_video, generate_music_score, split_audio, transcribe_vocals
 
@@ -90,7 +92,7 @@ if st.session_state.get('video_loaded', False):
             # 5 Generate the music score from the accompaniment, return path to score, path to midi and path to pdf
             # TODO function to generate the music score from the accompaniment
 
-        with st.spinner('Generating music score from accompaniment...'):
+        with st.spinner('Generating music score from accompaniment...This takes a lot of time...⏳ ☕☕ '):
 
             # Check this for MIDI player https://github.com/andfanilo/streamlit-midi-to-wav/blob/main/app.py
 
@@ -155,10 +157,7 @@ if st.session_state.get('video_processed', False):
     # PDF viewer
     # Get the pdf file from the session state
     pdf_file_path = st.session_state['video_score_pdf_path']
-    pdf_file = open(pdf_file_path, 'rb')
-    pdf_bytes = pdf_file.read()
-    st.write(pdf_bytes)
-    pdf_file.close()
+    pdf_viewer(pdf_file_path)
 
     score_path = st.session_state['video_score_path']
     midi_path = st.session_state['video_score_midi_path']

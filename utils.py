@@ -168,7 +168,7 @@ def generate_music_score(accompaniment_path):
     fs = FluidSynth()
 
     midi_file = '/kaggle/working/output.midi'  # Reemplaza con la ruta de tu archivo MIDI
-    wav_file = '/kaggle/working/output.wav'       # Ruta del archivo WAV resultante
+    wav_file = '/kaggle/working/output_midi.wav'       # Ruta del archivo WAV resultante
 
     fs.midi_to_audio(midi_file, wav_file)
 
