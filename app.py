@@ -21,11 +21,8 @@ if st.button('Load Video'):
     if url:
         with st.spinner('Cargando video...'):
             # Crear una variable en la sesión para almacenar el estado
-            if 'loaded_video' not in st.session_state:
-                st.session_state['video_loaded'] = True
-                st.session_state['video_url'] = url
-            else:
-                st.session_state['video_loaded'] = not st.session_state['video_loaded']
+            st.session_state['video_loaded'] = True
+            st.session_state['video_url'] = url
 
     else:
         st.error('Por favor, introduce una URL válida.')
@@ -109,10 +106,8 @@ if st.session_state.get('video_loaded', False):
             st.success('Video procesado con éxito.')
 
         # Create a variable in the session to store the state
-        if 'video_processed' not in st.session_state:
-            st.session_state['video_processed'] = True
-        else:
-            st.session_state['video_processed'] = not st.session_state['video_processed']
+        st.session_state['video_processed'] = True
+
 
 
 # Information about the video processed

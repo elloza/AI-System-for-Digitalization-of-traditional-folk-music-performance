@@ -6,6 +6,10 @@ import tempfile
 import json
 import pathlib
 from faster_whisper import WhisperModel
+import logging
+
+logging.basicConfig()
+logging.getLogger("faster_whisper").setLevel(logging.DEBUG)
 
 
 # Youtube-dl template
@@ -87,29 +91,35 @@ def split_audio(audio_file_path):
 
 # Function to transcribe the vocals and return the lyrics
 # pip install faster-whisper
-def transcribe_vocals(audio_vocals_path):
+def transcribe_vocals(audio_vocals_path, st):
+    
     # Devolver el resultado
     model_size = "large-v3"
+    model = None
 
-    # Run on GPU with FP16
-    #model = WhisperModel(model_size, device="cuda", compute_type="float16")
-    
-    # or run on GPU with INT8
-    model = WhisperModel(model_size, device="cuda", compute_type="int8_float16")
-
-    # or run on CPU with INT8
-    #model = WhisperModel(model_size, device="cpu", compute_type="int8")
+    # Check if model is available in st session state
+    if 'whisper_model' not in st.session_state:
+        # or run on CPU with INT8
+        #model = WhisperModel(model_size, device="cpu", compute_type="int8")
+        #model = WhisperModel(model_size, device="cuda", compute_type="float16")
+        # Run on GPU with FP16
+        model = WhisperModel(model_size, device="cuda", compute_type="float16")
+        
+        st.session_state['whisper_model'] = model
+    else:
+        # Get the model from the session state
+        model = st.session_state['whisper_model']
 
     segments, info = model.transcribe(audio_vocals_path, beam_size=5)
 
     print("Detected language '%s' with probability %f" % (info.language, info.language_probability))
 
-    segments = list(segments)
+    segments_list = list(segments)
 
-    for segment in segments:
+    for segment in segments_list:
         print("[%.2fs -> %.2fs] %s" % (segment.start, segment.end, segment.text))
 
-    return segments, info
+    return segments_list, info
 
 # Function to generate the music score from the accompaniment
 def generate_music_score(accompaniment_path):
