@@ -3,7 +3,7 @@ import streamlit as st
 import json
 from streamlit_player import st_player
 # import util functions
-from utils import convert_vimeo_url_to_embed, convert_youtube_url_to_embed, download_audio_of_video, generate_music_score, split_audio, transcribe_vocals
+from utils import download_audio_of_video, generate_music_score, split_audio, transcribe_vocals
 
 # Application title
 st.title('AI tool for digitalization of traditional folk music performances')
