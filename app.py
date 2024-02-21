@@ -94,12 +94,13 @@ if st.session_state.get('video_loaded', False):
 
             # Check this for MIDI player https://github.com/andfanilo/streamlit-midi-to-wav/blob/main/app.py
 
-            pdf_path, midi_path, score_path = generate_music_score(audio_accompaniment_path)
+            pdf_path, midi_path, score_path, midi_wav_path = generate_music_score(audio_accompaniment_path)
 
             # Save the paths in the session state
             st.session_state['video_score_pdf_path'] = pdf_path
             st.session_state['video_score_midi_path'] = midi_path
             st.session_state['video_score_path'] = score_path
+            st.session_state['video_score_midi_wav_path'] = midi_wav_path
 
             # 6 Show the lyrics and the music score
             # TODO show the lyrics and the music score
@@ -153,29 +154,28 @@ if st.session_state.get('video_processed', False):
 
     # PDF viewer
     # Get the pdf file from the session state
-    """
     pdf_file_path = st.session_state['video_score_pdf_path']
     pdf_file = open(pdf_file_path, 'rb')
     pdf_bytes = pdf_file.read()
     st.write(pdf_bytes)
     pdf_file.close()
-    """
 
     score_path = st.session_state['video_score_path']
     midi_path = st.session_state['video_score_midi_path']
 
     # MIDI player
+    st.subheader('MIDI Audio player')
+    st.markdown('This is the audio of the sinthesized MIDI')
 
-    st.subheader('MIDI Player')
-    st.markdown('This is the MIDI player for the song')
-
-    #pdf_file = open('score.pdf', 'rb')
-    #pdf_bytes = pdf_file.read()
-    #st.write(pdf_bytes)
-    #pdf_file.close()
+    filepath = st.session_state['video_score_midi_wav_path']
+    audio_file = open(filepath, 'rb')
+    audio_bytes = audio_file.read()
+    st.audio(audio_bytes, format='audio/wav', start_time=0)
 
     # Section for the score player musicxml js
     st.subheader('Score Player')
     st.markdown('This is the score player for the song')
 
-    # Score player
+    # Show Wor in progress message
+    st.text('Work in progress section...')
+

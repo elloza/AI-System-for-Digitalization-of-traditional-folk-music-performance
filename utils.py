@@ -6,12 +6,16 @@ import tempfile
 import json
 import pathlib
 from faster_whisper import WhisperModel
+from midi2audio import FluidSynth
 import logging
 import pathlib
 from sheetsage.infer import sheetsage
 from sheetsage.utils import engrave
 from sheetsage.align import create_beat_to_time_fn
 from tqdm import tqdm
+
+
+
 
 logging.basicConfig()
 logging.getLogger("faster_whisper").setLevel(logging.DEBUG)
@@ -161,11 +165,19 @@ def generate_music_score(accompaniment_path):
             )
         )
 
+    fs = FluidSynth()
+
+    midi_file = '/kaggle/working/output.midi'  # Reemplaza con la ruta de tu archivo MIDI
+    wav_file = '/kaggle/working/output.wav'       # Ruta del archivo WAV resultante
+
+    fs.midi_to_audio(midi_file, wav_file)
+
     path_to_score = "/kaggle/working/output.ly"
     path_to_midi = "/kaggle/working/output.midi"
     path_to_pdf = "/kaggle/working/output.pdf"
+    path_to_midi_wav = "/kaggle/working/output_midi.wav"
 
-    return path_to_score, path_to_midi, path_to_pdf
+    return path_to_score, path_to_midi, path_to_pdf, path_to_midi_wav
 
 def run_cmd_sync(cmd, cwd=None, interactive=False, timeout=None):
     """Runs a console command synchronously and returns the results.
