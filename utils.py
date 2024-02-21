@@ -76,7 +76,7 @@ def split_audio(audio_file_path):
     audio_filename = os.path.splitext(audio_filename_ext)[0]
 
     # Remove files in the output directory if they exist
-    if os.path.exists('output/{audio_filename}/vocals.wav'):
+    if os.path.exists(f'output/{audio_filename}/vocals.wav'):
         os.system(f'rm -r output/{audio_filename}/vocals.wav')
         os.system(f'rm -r output/{audio_filename}/accompaniment.wav')
     else:
