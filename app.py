@@ -158,13 +158,15 @@ if st.session_state.get('video_processed', False):
     # PDF viewer
     # Get the pdf file from the session state
     pdf_file_path = st.session_state['video_score_pdf_path']
+    print(f'PDF file path: {pdf_file_path}')
     #pdf_viewer(pdf_file_path)
 
     # Crear el botón de descarga
     with open(pdf_file_path,"rb") as f:
         base64_pdf = base64.b64encode(f.read()).decode('utf-8')
     
-    pdf_display = f'<embed src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf">'
+    pdf_display = F'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
+
     st.markdown(pdf_display, unsafe_allow_html=True)
     
     st.text('Work in progress section...')
