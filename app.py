@@ -3,6 +3,7 @@ import streamlit as st
 import json
 from streamlit_player import st_player
 from streamlit_pdf_viewer import pdf_viewer
+import base64
 
 # import util functions
 from utils import download_audio_of_video, generate_music_score, get_pdf_file_as_base64, split_audio, transcribe_vocals
@@ -162,10 +163,11 @@ if st.session_state.get('video_processed', False):
     base64_pdf = get_pdf_file_as_base64(pdf_file_path)
 
     # Crear el botón de descarga
-    st.download_button(label='Descargar PDF',
-                   data=base64_pdf,
-                   file_name='score.pdf',
-                   mime='application/octet-stream')
+    with open(pdf_path,"rb") as f:
+        base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+    
+    pdf_display = f'<embed src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf">'
+    st.markdown(pdf_display, unsafe_allow_html=True)
     
     st.text('Work in progress section...')
 
