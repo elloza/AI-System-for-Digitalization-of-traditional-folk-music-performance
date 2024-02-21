@@ -5,7 +5,7 @@ from streamlit_player import st_player
 from streamlit_pdf_viewer import pdf_viewer
 
 # import util functions
-from utils import download_audio_of_video, generate_music_score, split_audio, transcribe_vocals
+from utils import download_audio_of_video, generate_music_score, get_pdf_file_as_base64, split_audio, transcribe_vocals
 
 # Application title
 st.title('AI tool for digitalization of traditional folk music performances')
@@ -157,15 +157,15 @@ if st.session_state.get('video_processed', False):
     # PDF viewer
     # Get the pdf file from the session state
     pdf_file_path = st.session_state['video_score_pdf_path']
-    pdf_viewer(pdf_file_path)
+    #pdf_viewer(pdf_file_path)
 
-    with open(pdf_file_path, "rb") as pdf_file:
-        PDFbyte = pdf_file.read()
+    base64_pdf = get_pdf_file_as_base64(pdf_file_path)
 
-    st.download_button(label="Export_Score_PDF",
-                        data=PDFbyte,
-                        file_name="score.pdf",
-                        mime='application/octet-stream')
+    # Crear el botón de descarga
+    st.download_button(label='Descargar PDF',
+                   data=base64_pdf,
+                   file_name='score.pdf',
+                   mime='application/octet-stream')
     
     st.text('Work in progress section...')
 

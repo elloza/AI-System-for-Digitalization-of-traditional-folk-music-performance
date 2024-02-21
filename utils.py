@@ -1,4 +1,5 @@
 ## File class with utility functions for the app
+import base64
 import os
 import subprocess
 import shlex
@@ -127,6 +128,11 @@ def transcribe_vocals(audio_vocals_path, st):
         print("[%.2fs -> %.2fs] %s" % (segment.start, segment.end, segment.text))
 
     return segments_list, info
+
+def get_pdf_file_as_base64(pdf_file_path):
+        with open(pdf_file_path, "rb") as f:
+            base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+        return base64_pdf
 
 # Function to generate the music score from the accompaniment
 def generate_music_score(accompaniment_path):
