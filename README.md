@@ -5,6 +5,8 @@ Artificial Intelligence system for digitalization of traditional folk music perf
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Y7OBCpBdSHdldxV9XcQEeupNs4w2cAdX?usp=sharing#scrollTo=Jb7QdXc0-nqs)
 
+[![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)] (https://kaggle.com/kernels/welcome?src=https://github.com/keras-team/keras-io/blob/master/examples/vision/ipynb/mnist_convnet.ipynb)
+
 ## Description of the system
 
 <div align="center">

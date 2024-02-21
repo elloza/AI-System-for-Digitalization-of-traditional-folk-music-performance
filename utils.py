@@ -86,6 +86,7 @@ def split_audio(audio_file_path):
 
 
 # Function to transcribe the vocals and return the lyrics
+# pip install faster-whisper
 def transcribe_vocals(audio_vocals_path):
     # Devolver el resultado
     model_size = "large-v3"
@@ -208,6 +209,7 @@ def convert_youtube_url_to_embed(url: str) -> str:
 
 
 # function to split audio into vocal and accompaniment
+# pip install spleeter
 # returns the paths of the vocal and accompaniment files
 # with the following format: output/audio_filename/vocals.wav
 # and output/audio_filename/accompaniment.wav
