@@ -160,10 +160,8 @@ if st.session_state.get('video_processed', False):
     pdf_file_path = st.session_state['video_score_pdf_path']
     #pdf_viewer(pdf_file_path)
 
-    base64_pdf = get_pdf_file_as_base64(pdf_file_path)
-
     # Crear el botón de descarga
-    with open(pdf_path,"rb") as f:
+    with open(pdf_file_path,"rb") as f:
         base64_pdf = base64.b64encode(f.read()).decode('utf-8')
     
     pdf_display = f'<embed src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf">'
