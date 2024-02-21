@@ -15,8 +15,6 @@ from sheetsage.align import create_beat_to_time_fn
 from tqdm import tqdm
 
 
-
-
 logging.basicConfig()
 logging.getLogger("faster_whisper").setLevel(logging.DEBUG)
 
