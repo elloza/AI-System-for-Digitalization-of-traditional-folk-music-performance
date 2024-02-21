@@ -7,6 +7,11 @@ import json
 import pathlib
 from faster_whisper import WhisperModel
 import logging
+import pathlib
+from sheetsage.infer import sheetsage
+from sheetsage.utils import engrave
+from sheetsage.align import create_beat_to_time_fn
+from tqdm import tqdm
 
 logging.basicConfig()
 logging.getLogger("faster_whisper").setLevel(logging.DEBUG)
@@ -123,13 +128,42 @@ def transcribe_vocals(audio_vocals_path, st):
 
 # Function to generate the music score from the accompaniment
 def generate_music_score(accompaniment_path):
-    # TODO function to generate the music score from the accompaniment
 
-    # TODO generate the music score from the accompaniment wav file
-    
-    path_to_score = 'path_to_score'
-    path_to_midi = 'path_to_midi'
-    path_to_pdf = 'path_to_pdf'
+    USE_JUKEBOX = True
+    logging.basicConfig(level=logging.INFO)
+
+    lead_sheet, segment_beats, segment_beats_times = sheetsage(
+        accompaniment_path,
+        use_jukebox=USE_JUKEBOX,
+        measures_per_chunk=4,
+        tqdm=tqdm)
+
+    # Write lead sheet
+    lily = lead_sheet.as_lily(artist="A", title="Titulo")
+    with open(pathlib.Path("/kaggle/working/", "output.ly"), "w") as f:
+        f.write(lily)
+
+    # Write PDF
+    with open(pathlib.Path("/kaggle/working/", "output.pdf"), "wb") as f:
+        f.write(
+            engrave(
+                lily, out_format="pdf", transparent=False, trim=False, hide_footer=False
+            )
+        )
+
+    # Write MIDI
+    with open(pathlib.Path("/kaggle/working/", "output.midi"), "wb") as f:
+        f.write(
+            lead_sheet.as_midi(
+                pulse_to_time_fn=create_beat_to_time_fn(
+                    segment_beats, segment_beats_times
+                )
+            )
+        )
+
+    path_to_score = "/kaggle/working/output.ly"
+    path_to_midi = "/kaggle/working/output.midi"
+    path_to_pdf = "/kaggle/working/output.pdf"
 
     return path_to_score, path_to_midi, path_to_pdf
 
