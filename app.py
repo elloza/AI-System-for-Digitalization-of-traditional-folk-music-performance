@@ -96,7 +96,7 @@ if st.session_state.get('video_loaded', False):
 
             # Check this for MIDI player https://github.com/andfanilo/streamlit-midi-to-wav/blob/main/app.py
 
-            pdf_path, midi_path, score_path, midi_wav_path = generate_music_score(audio_accompaniment_path)
+            pdf_path, midi_path, score_path, midi_wav_path = generate_music_score(audio_filepath)
 
             # Save the paths in the session state
             st.session_state['video_score_pdf_path'] = pdf_path
