@@ -141,6 +141,16 @@ def generate_music_score(accompaniment_path):
         use_jukebox=USE_JUKEBOX,
         measures_per_chunk=4,
         tqdm=tqdm)
+    
+    # Remove files if they exist
+    if os.path.exists('/kaggle/working/output.ly'):
+        os.remove('/kaggle/working/output.ly')
+    if os.path.exists('/kaggle/working/output.pdf'):
+        os.remove('/kaggle/working/output.pdf')
+    if os.path.exists('/kaggle/working/output.midi'):
+        os.remove('/kaggle/working/output.midi')
+    if os.path.exists('/kaggle/working/output_midi.wav'):
+        os.remove('/kaggle/working/output_midi.wav')
 
     # Write lead sheet
     lily = lead_sheet.as_lily(artist="A", title="Titulo")
