@@ -1,13 +1,29 @@
 # AI-System-for-Digitalization-of-traditional-folk-music-performance
 Artificial Intelligence system for digitalization of traditional folk music performances
 
-# Demo notebook
+# Context
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Y7OBCpBdSHdldxV9XcQEeupNs4w2cAdX?usp=sharing#scrollTo=Jb7QdXc0-nqs)
+Traditional folk music is a cultural heritage that is being lost. The main reason for this is that the music is not being recorded and digitalized. 
 
-[![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)] (https://kaggle.com/kernels/welcome?src=https://github.com/keras-team/keras-io/blob/master/examples/vision/ipynb/mnist_convnet.ipynb)
+Among the task in the digitalization of traditional folk music performances, we can find:
+
+- Transcription of the music to sheet music
+- Transcription of the lyrics of the song
+
+This task is usually done by hand, which is a time-consuming and expensive process. The traditional music archives are full of recordings and this is a huge amount of data to be digitalized.
+
+This project aims to create an AI system that can digitalize traditional folk music performances. The system will be able to transcribe the music to sheet music, separate the voice from the instruments, and transcribe the lyrics of the song.
+
 
 ## Description of the system
+
+The system is composed of different parts in order to achieve the digitalization of traditional folk music performances. The system is composed of the following parts:
+
+- Video and audio collection from online sources through an URL of the performance
+- Audio separation (voice and instruments): The system will separate the voice from the instruments in the audio of the performance for further analysis and processing.
+- Voice to lyrics: The system will transcribe the voice of the performance to lyrics.
+- Audio to score transcription: The system will transcribe the audio of the performance to sheet music in xml, midi and pdf format.
+
 
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
@@ -15,27 +31,33 @@ Artificial Intelligence system for digitalization of traditional folk music perf
   </a>
 </div>
 
-System description.
+# Demo notebook
+
+[![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code/elloza/ai-tool-for-digitalization-of-traditional-folk-mus)
 
 
 ## Employed utils and models:
 
 ### Audio separation (voice and instruments)
-
-* Jukemir: https://github.com/p-lambda/jukemir
+<p align="center">
+<img src="https://github.com/deezer/spleeter/raw/master/images/spleeter_logo.png" width="99%"/>
+</p>
+* Spleeter by deezer: https://github.com/deezer/spleeter
   
 ### Audio to score transcription
-
-* Mule: https://github.com/PandoraMedia/music-audio-representations
+<p align="center">
+<img src="https://raw.githubusercontent.com/chrisdonahue/sheetsage/main/static/banner.png" width="99%"/>
+</p>
+* SheetSage: https://github.com/chrisdonahue/sheetsage
   
 ### Audio (voice) to lyrics
-
-* MERT: https://github.com/yizhilll/MERT
+<p align="center">
+<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdubverse.ai%2Fwp-content%2Fuploads%2F2022%2F09%2FFrame-4-1.png&f=1&nofb=1&ipt=55c089a153af8da8f4daa7b43c7106372295e94f1603711fc307ca6e340a7ffa&ipo=images" height="100px"/>
+</p>
+* faster-whisper: https://github.com/SYSTRAN/faster-whisper
 
 ### Tool
 
-
-  
 <!-- CITATION -->
 ### Citation
 
