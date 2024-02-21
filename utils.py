@@ -191,7 +191,7 @@ def generate_music_score(accompaniment_path):
     path_to_pdf = "/kaggle/working/output.pdf"
     path_to_midi_wav = "/kaggle/working/output_midi.wav"
 
-    return path_to_score, path_to_midi, path_to_pdf, path_to_midi_wav
+    return path_to_pdf, path_to_midi, path_to_score, path_to_midi_wav
 
 def run_cmd_sync(cmd, cwd=None, interactive=False, timeout=None):
     """Runs a console command synchronously and returns the results.
