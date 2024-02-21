@@ -159,6 +159,16 @@ if st.session_state.get('video_processed', False):
     pdf_file_path = st.session_state['video_score_pdf_path']
     pdf_viewer(pdf_file_path)
 
+    with open(pdf_file_path, "rb") as pdf_file:
+        PDFbyte = pdf_file.read()
+
+    st.download_button(label="Export_Score_PDF",
+                        data=PDFbyte,
+                        file_name="score.pdf",
+                        mime='application/octet-stream')
+    
+    st.text('Work in progress section...')
+
     score_path = st.session_state['video_score_path']
     midi_path = st.session_state['video_score_midi_path']
 
