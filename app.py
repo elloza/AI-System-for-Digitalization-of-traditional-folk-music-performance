@@ -74,7 +74,7 @@ if st.session_state.get('video_loaded', False):
             # pip install faster_whisper
             # function to transcribe the vocals and return the lyrics
             # Check this for lyrics
-            segments, info = transcribe_vocals(audio_vocals_path)
+            segments, info = transcribe_vocals(audio_vocals_path,st)
 
             # Segments to full text
             text = ''
