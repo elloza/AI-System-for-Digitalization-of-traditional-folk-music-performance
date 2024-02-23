@@ -192,7 +192,6 @@ if st.session_state.get('video_processed', False):
     # HTML para el reproductor MIDI
     html_content = f"""
     <midi-player
-    <midi-player
     src="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid"
     sound-font visualizer="#myStaffVisualizer">
     </midi-player>
