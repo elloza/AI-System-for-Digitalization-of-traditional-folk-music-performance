@@ -192,12 +192,13 @@ if st.session_state.get('video_processed', False):
     # HTML para el reproductor MIDI
     html_content = f"""
     <midi-player
-    src="data:audio/midi;base64,{midi_base64}"
+    <midi-player
+    src="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid"
     sound-font visualizer="#myStaffVisualizer">
     </midi-player>
 
     <midi-visualizer type="staff" id="myStaffVisualizer" 
-    src="data:audio/midi;base64,{midi_base64}">
+    src="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid">
     </midi-visualizer>
 
     <script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.5.0"></script>
