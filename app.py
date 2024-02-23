@@ -168,8 +168,6 @@ if st.session_state.get('video_processed', False):
     pdf_display = F'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
 
     st.markdown(pdf_display, unsafe_allow_html=True)
-    
-    st.text('Work in progress section...')
 
     score_path = st.session_state['video_score_path']
     midi_path = st.session_state['video_score_midi_path']
@@ -187,6 +185,24 @@ if st.session_state.get('video_processed', False):
     st.subheader('Score Player')
     st.markdown('This is the score player for the song')
 
-    # Show Wor in progress message
-    st.text('Work in progress section...')
+    midi_base64 = None
+    with open(filepath, "rb") as file:
+        midi_base64 = base64.b64encode(file.read()).decode()
+
+    # HTML para el reproductor MIDI
+    html_content = f"""
+    <midi-player
+    src="data:audio/midi;base64,{midi_base64}"
+    sound-font visualizer="#myStaffVisualizer">
+    </midi-player>
+
+    <midi-visualizer type="staff" id="myStaffVisualizer" 
+    src="data:audio/midi;base64,{midi_base64}">
+    </midi-visualizer>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.5.0"></script>
+    """
+
+    # Insertar el HTML en la aplicación Streamlit
+    st.markdown(html_content, unsafe_allow_html=True)
 
