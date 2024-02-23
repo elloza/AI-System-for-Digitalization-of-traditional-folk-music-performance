@@ -109,7 +109,7 @@ def transcribe_vocals(audio_vocals_path, st):
     if 'whisper_model' not in st.session_state:
         # or run on CPU with INT8
         #model = WhisperModel(model_size, device="cpu", compute_type="int8")
-        model = WhisperModel(model_size, device="cuda", compute_type="int8_float16",vad_filter=True)
+        model = WhisperModel(model_size, device="cuda", compute_type="int8_float16")
         # Run on GPU with FP16
         #model = WhisperModel(model_size, device="cuda", compute_type="float16")
         
@@ -118,7 +118,7 @@ def transcribe_vocals(audio_vocals_path, st):
         # Get the model from the session state
         model = st.session_state['whisper_model']
 
-    segments, info = model.transcribe(audio_vocals_path, beam_size=5)
+    segments, info = model.transcribe(audio_vocals_path, beam_size=5,vad_filter=True)
 
     print("Detected language '%s' with probability %f" % (info.language, info.language_probability))
 
