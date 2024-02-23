@@ -109,7 +109,7 @@ def transcribe_vocals(audio_vocals_path, st):
     if 'whisper_model' not in st.session_state:
         # or run on CPU with INT8
         #model = WhisperModel(model_size, device="cpu", compute_type="int8")
-        model = WhisperModel(model_size, device="cuda", compute_type="int8_float16")
+        model = WhisperModel(model_size, device="cuda", compute_type="int8_float16",vad_filter=True)
         # Run on GPU with FP16
         #model = WhisperModel(model_size, device="cuda", compute_type="float16")
         
