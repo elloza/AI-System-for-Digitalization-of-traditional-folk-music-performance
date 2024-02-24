@@ -27,7 +27,7 @@ The system is composed of different parts in order to achieve the digitalization
 
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Main diagram of the system" width="256" height="256">
+    <img src="https://raw.githubusercontent.com/elloza/AI-System-for-Digitalization-of-traditional-folk-music-performance/main/images/ProposedSystem.png" alt="Main diagram of the system" width="500" height="500">
   </a>
 </div>
 
@@ -68,12 +68,12 @@ If you find this repo useful in your research, please consider citing:
 ```
 @article{folk-digitalization-tool-2024,
   title={Artificial Intelligence system for digitalization of traditional folk music performances},
-  author={Álvaro Lozano Murciego, Diego M. Jiménez Bravo, Daniel Hernández de la Iglesia and Héctor Sánchez San Blas
+  author={Álvaro Lozano Murciego, Diego M. Jiménez Bravo, Daniel Hernández de la Iglesia, Héctor Sánchez San Blas and Gabriel Villarubia González},
   journal={},
   volume={},
   number={},
   pages={},
-  year={},
+  year={2024},
   publisher={}
 }
 ```
