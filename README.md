@@ -52,7 +52,7 @@ The system is composed of different parts in order to achieve the digitalization
   
 ### Audio (voice) to lyrics
 <p align="center">
-<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdubverse.ai%2Fwp-content%2Fuploads%2F2022%2F09%2FFrame-4-1.png&f=1&nofb=1&ipt=55c089a153af8da8f4daa7b43c7106372295e94f1603711fc307ca6e340a7ffa&ipo=images" height="100px"/>
+<img src="https://raw.githubusercontent.com/elloza/AI-System-for-Digitalization-of-traditional-folk-music-performance/main/images/whisper_logo.png" height="100px" />
 </p>
 * faster-whisper: https://github.com/SYSTRAN/faster-whisper
 
