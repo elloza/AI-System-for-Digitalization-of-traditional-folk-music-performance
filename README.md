@@ -61,7 +61,7 @@ The system is composed of different parts in order to achieve the digitalization
 <!-- CITATION -->
 ### Citation
 
-[![DOI](https://zenodo.org/badge/700259318.svg)](https://zenodo.org/doi/10.5281/zenodo.10659379)
+[![DOI](https://zenodo.org/badge/759361583.svg)](https://zenodo.org/doi/10.5281/zenodo.10700893)
 
 If you find this repo useful in your research, please consider citing:
 

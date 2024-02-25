@@ -96,8 +96,10 @@ if st.session_state.get('video_loaded', False):
         with st.spinner('Generating music score from accompaniment...This takes a lot of time...⏳ ☕☕ '):
 
             # Check this for MIDI player https://github.com/andfanilo/streamlit-midi-to-wav/blob/main/app.py
+            
+            #pdf_path, midi_path, score_path, midi_wav_path = generate_music_score(audio_filepath)
+            pdf_path, midi_path, score_path, midi_wav_path = generate_music_score(url)
 
-            pdf_path, midi_path, score_path, midi_wav_path = generate_music_score(audio_filepath)
 
             # Save the paths in the session state
             st.session_state['video_score_pdf_path'] = pdf_path

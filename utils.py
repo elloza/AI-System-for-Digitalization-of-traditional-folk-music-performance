@@ -135,13 +135,13 @@ def get_pdf_file_as_base64(pdf_file_path):
         return base64_pdf
 
 # Function to generate the music score from the accompaniment
-def generate_music_score(accompaniment_path):
+def generate_music_score(audio_url):
 
     USE_JUKEBOX = True
     logging.basicConfig(level=logging.INFO)
 
     lead_sheet, segment_beats, segment_beats_times = sheetsage(
-        accompaniment_path,
+        audio_url,
         use_jukebox=USE_JUKEBOX,
         measures_per_chunk=4,
         tqdm=tqdm)
