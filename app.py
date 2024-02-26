@@ -3,6 +3,8 @@ import streamlit as st
 import json
 from streamlit_player import st_player
 from streamlit_pdf_viewer import pdf_viewer
+from midi_player import MIDIPlayer
+from midi_player.stylers import basic, cifka_advanced
 import base64
 
 # import util functions
@@ -187,24 +189,23 @@ if st.session_state.get('video_processed', False):
     st.subheader('Score Player')
     st.markdown('This is the score player for the song')
 
-    midi_base64 = None
-    with open(filepath, "rb") as file:
-        midi_base64 = base64.b64encode(file.read()).decode()
+    mp = MIDIPlayer(midi_path, 300, viz_type="waterfall")
+    st.markdown(mp.html, unsafe_allow_html=True)
 
     # HTML para el reproductor MIDI
-    html_content = f"""
-    <midi-player
-    src="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid"
-    sound-font visualizer="#myStaffVisualizer">
-    </midi-player>
+    # html_content = f"""
+    # <midi-player
+    # src="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid"
+    # sound-font visualizer="#myStaffVisualizer">
+    # </midi-player>
 
-    <midi-visualizer type="staff" id="myStaffVisualizer" 
-    src="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid">
-    </midi-visualizer>
+    # <midi-visualizer type="staff" id="myStaffVisualizer" 
+    # src="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid">
+    # </midi-visualizer>
 
-    <script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.5.0"></script>
-    """
+    # <script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.5.0"></script>
+    # """
 
     # Insertar el HTML en la aplicación Streamlit
-    st.markdown(html_content, unsafe_allow_html=True)
+    #
 
