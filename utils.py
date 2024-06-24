@@ -39,6 +39,17 @@ def download_audio_of_video(url: str, audio_name: str = 'output') -> str:
 
     # Remove audio file if it exists
     audio_file_path = f'{audio_name}.wav'
+
+    # Remove files if they exist
+    if os.path.exists('/tmp/output.ly'):
+        os.remove('/tmp/output.ly')
+    if os.path.exists('/tmp/output.pdf'):
+        os.remove('/tmp/output.pdf')
+    if os.path.exists('/tmp/output.midi'):
+        os.remove('/tmp/output.midi')
+    if os.path.exists('/tmp/output_midi.wav'):
+        os.remove('/tmp/output_midi.wav')
+
     if os.path.exists(audio_file_path):
         os.remove(audio_file_path)
     else:
