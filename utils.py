@@ -135,7 +135,7 @@ def get_pdf_file_as_base64(pdf_file_path):
         return base64_pdf
 
 # Function to generate the music score from the accompaniment
-def generate_music_score(audio_url):
+def generate_music_score(audio_url, temp_root="/tmp/"):
 
     USE_JUKEBOX = True
     logging.basicConfig(level=logging.INFO)
@@ -147,22 +147,22 @@ def generate_music_score(audio_url):
         tqdm=tqdm)
     
     # Remove files if they exist
-    if os.path.exists('/kaggle/working/output.ly'):
-        os.remove('/kaggle/working/output.ly')
-    if os.path.exists('/kaggle/working/output.pdf'):
-        os.remove('/kaggle/working/output.pdf')
-    if os.path.exists('/kaggle/working/output.midi'):
-        os.remove('/kaggle/working/output.midi')
-    if os.path.exists('/kaggle/working/output_midi.wav'):
-        os.remove('/kaggle/working/output_midi.wav')
+    if os.path.exists('/tmp/output.ly'):
+        os.remove('/tmp/output.ly')
+    if os.path.exists('/tmp/output.pdf'):
+        os.remove('/tmp/output.pdf')
+    if os.path.exists('/tmp/output.midi'):
+        os.remove('/tmp/output.midi')
+    if os.path.exists('/tmp/output_midi.wav'):
+        os.remove('/tmp/output_midi.wav')
 
     # Write lead sheet
     lily = lead_sheet.as_lily(artist="A", title="Titulo")
-    with open(pathlib.Path("/kaggle/working/", "output.ly"), "w") as f:
+    with open(pathlib.Path("/tmp/", "output.ly"), "w") as f:
         f.write(lily)
 
     # Write PDF
-    with open(pathlib.Path("/kaggle/working/", "output.pdf"), "wb") as f:
+    with open(pathlib.Path("/tmp/", "output.pdf"), "wb") as f:
         f.write(
             engrave(
                 lily, out_format="pdf", transparent=False, trim=False, hide_footer=False
@@ -170,7 +170,7 @@ def generate_music_score(audio_url):
         )
 
     # Write MIDI
-    with open(pathlib.Path("/kaggle/working/", "output.midi"), "wb") as f:
+    with open(pathlib.Path("/tmp/", "output.midi"), "wb") as f:
         f.write(
             lead_sheet.as_midi(
                 pulse_to_time_fn=create_beat_to_time_fn(
@@ -181,15 +181,15 @@ def generate_music_score(audio_url):
 
     fs = FluidSynth()
 
-    midi_file = '/kaggle/working/output.midi'  # Reemplaza con la ruta de tu archivo MIDI
-    wav_file = '/kaggle/working/output_midi.wav'       # Ruta del archivo WAV resultante
+    midi_file = '/tmp/output.midi'  # Reemplaza con la ruta de tu archivo MIDI
+    wav_file = '/tmp/output_midi.wav'       # Ruta del archivo WAV resultante
 
     fs.midi_to_audio(midi_file, wav_file)
 
-    path_to_score = "/kaggle/working/output.ly"
-    path_to_midi = "/kaggle/working/output.midi"
-    path_to_pdf = "/kaggle/working/output.pdf"
-    path_to_midi_wav = "/kaggle/working/output_midi.wav"
+    path_to_score = "/tmp/output.ly"
+    path_to_midi = "/tmp/output.midi"
+    path_to_pdf = "/tmp/output.pdf"
+    path_to_midi_wav = "/tmp/output_midi.wav"
 
     return path_to_pdf, path_to_midi, path_to_score, path_to_midi_wav
 
