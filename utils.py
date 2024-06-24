@@ -33,7 +33,7 @@ _SPLIT_AUDIO_CMD_TEMPLATE = '''spleeter separate -p spleeter:2stems -o output {a
 #ln -s $(which yt-dlp) /usr/local/bin/youtube-dl
 # apt-get install -y software-properties-common && sudo apt-get update && apt-get install -y ffmpeg
 def download_audio_of_video(url: str, audio_name: str = 'output') -> str:
-    """F
+    """
     Download a video from a url and return the path
     """
 
