@@ -30,7 +30,9 @@ with st.sidebar:
     st.markdown("""
     Tool for the transcription of lyrics and melodies of traditional music performances recorded on video.
     Work done in collaboration with [MPAGDP](https://amusicaportuguesaagostardelapropria.org/)
-    [EA-DIGIFOLK](https://cordis.europa.eu/project/id/101086338)
+    
+    
+    **Project**: [EA-DIGIFOLK](https://cordis.europa.eu/project/id/101086338)
     
     This prototype was made with **Streamlit**""")
 
