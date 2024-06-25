@@ -39,7 +39,7 @@ RUN ln -s $(which yt-dlp) /usr/local/bin/youtube-dl
 RUN pip3 install spleeter
 
 # INSTALL FASTER-WHISPER
-RUN pip3 install faster-whisper
+RUN pip3 install git+https://github.com/trungkienbkhn/faster-whisper.git@improve-language-detection
 
 # Instala Jukebox
 RUN python3 -m pip install --no-cache-dir torch==1.12.0+cu113 --extra-index-url https://download.pytorch.org/whl/cu113 && \
