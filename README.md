@@ -35,6 +35,9 @@ The system is composed of different parts in order to achieve the digitalization
 
 [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code/elloza/ai-tool-for-digitalization-of-traditional-folk-mus)
 
+# Demo docker image
+
+
 
 ## Employed utils and models:
 
@@ -88,7 +91,7 @@ This repository contains the results of the collaboration between the cultural a
     <img src="https://usal.es/files/logo_usal.png" alt="Logo" width="250" height="100" style="margin:10px;padding:20px;">
   </a>
   <a href="https://amusicaportuguesaagostardelapropria.org">
-    <img src="https://amusicaportuguesaagostardelapropria.org/wp-content/themes/mpagdp-3/assets/images/header/logo-large.svg" alt="Logo" width="250" height="100" style="margin:10px;padding:20px;">
+    <img src="https://www.cm-arganil.pt/wp-content/uploads/2022/09/Logo-a-musica-portuguesa-a-gostar-dela.svg" alt="Logo" width="250" height="100" style="margin:10px;padding:20px;">
   </a>
   <a href="https://github.com/elloza/DIGIFOLK-USAL-ITMA">
     <img src="https://cordis.europa.eu/images/logo/logo-ec-es.svg" alt="Logo" width="250" height="100" style="margin:10px;padding:20px;">

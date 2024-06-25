@@ -14,9 +14,18 @@ from utils import download_audio_of_video, generate_music_score, get_pdf_file_as
 st.title('AI tool for digitalization of traditional folk music performances')
 
 with st.sidebar:
-    st.subheader('DIGIFOLK Project')
-    st.subheader('About')
-    st.markdown('This tools is made with **Streamlit**')
+    st.subheader('EA-DIGIFOLK Project')
+    st.image("https://cpi-europe.upv.es/wp-content/uploads/2023/01/MSCA.jpg", use_column_width=True)
+    st.image("https://logos-world.net/wp-content/uploads/2020/12/USAL-Symbol.png", use_column_width=True)
+    st.image("https://www.cm-arganil.pt/wp-content/uploads/2022/09/Logo-a-musica-portuguesa-a-gostar-dela.svg", use_column_width=True)
+
+    st.subheader('Description')
+    st.markdown("""
+    Tool for the transcription of lyrics and melodies of traditional music performances recorded on video.
+    Work done in collaboration with [MPAGDP](https://amusicaportuguesaagostardelapropria.org/)
+    [EA-DIGIFOLK](https://cordis.europa.eu/project/id/101086338)
+    
+    This prototype was made with **Streamlit**""")
 
 # Video url to process 
 url = st.text_input('Enter video URL (vimeo/youtube):')
