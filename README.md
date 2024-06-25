@@ -37,7 +37,28 @@ The system is composed of different parts in order to achieve the digitalization
 
 # Demo docker image
 
+You can build an image from the dockerfile included in this repository:
 
+## Prerequisites
+
+Before starting, ensure you have the following installed on your system:
+
+- [Docker](https://docs.docker.com/get-docker/)
+- [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html)
+
+Then
+
+```bash
+docker build --build-arg CACHEBUST=$(date +%s) -t ai-tool .
+```
+
+And finally:
+
+```bash
+docker run --gpus all -p 8502:8502 ai-tool
+```
+
+You should be able to reach the app at localhost:8502
 
 ## Employed utils and models:
 
