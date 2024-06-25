@@ -6,6 +6,7 @@ from streamlit_pdf_viewer import pdf_viewer
 from midi_player import MIDIPlayer
 from midi_player.stylers import basic, cifka_advanced
 import base64
+import time
 
 # import util functions
 from utils import download_audio_of_video, generate_music_score, get_pdf_file_as_base64, split_audio, transcribe_vocals
