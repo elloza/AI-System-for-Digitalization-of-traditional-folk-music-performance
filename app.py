@@ -10,6 +10,13 @@ import base64
 # import util functions
 from utils import download_audio_of_video, generate_music_score, get_pdf_file_as_base64, split_audio, transcribe_vocals
 
+
+st.set_page_config(
+    page_title="AI-Tool", 
+    page_icon="🎼", 
+    layout="wide"
+)
+
 # Application title
 st.title('AI tool for digitalization of traditional folk music performances')
 
