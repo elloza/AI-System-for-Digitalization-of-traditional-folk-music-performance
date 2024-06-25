@@ -62,6 +62,9 @@ if st.session_state.get('video_loaded', False):
     if st.button('Process Video'):
         # Process the video
 
+        progress_text = "Processing video..."
+        my_bar = st.progress(0, text=progress_text)
+
         # Display loading message while processing the video
         with st.spinner('Processing video...'):
 
@@ -78,6 +81,8 @@ if st.session_state.get('video_loaded', False):
             # Save video path and metadata in the session state 
             st.session_state['video_audio_processed_filepath'] = audio_filepath
 
+            my_bar = st.progress(25, text="Video downloaded. Performing splitting...")
+
         with st.spinner('Splitting audio in vocals and accompaniment..'):
 
             # 2 Extract the audio from the video and get the path
@@ -89,6 +94,8 @@ if st.session_state.get('video_loaded', False):
 
             st.session_state['video_audio_vocals_filepath'] = audio_vocals_path
             st.session_state['video_audio_accompaniment_filepath'] = audio_accompaniment_path
+
+            my_bar = st.progress(50, text="Audio splitted. Transcribing vocals and getting the lyrics..")
             
         with st.spinner('Transcribing vocals and getting the lyrics...'):
             # 4 Transcribe the vocals and get the lyrics
@@ -107,6 +114,8 @@ if st.session_state.get('video_loaded', False):
             st.session_state['video_lyrics_language'] = info.language
             st.session_state['video_lyrics_language_probability'] = info.language_probability
             
+            my_bar = st.progress(65, text="Lyrics obtained. Generating music score from accompaniment..")
+
 
             # 5 Generate the music score from the accompaniment, return path to score, path to midi and path to pdf
             # TODO function to generate the music score from the accompaniment
@@ -118,7 +127,6 @@ if st.session_state.get('video_loaded', False):
             #pdf_path, midi_path, score_path, midi_wav_path = generate_music_score(audio_filepath)
             pdf_path, midi_path, score_path, midi_wav_path = generate_music_score(url)
 
-
             # Save the paths in the session state
             st.session_state['video_score_pdf_path'] = pdf_path
             st.session_state['video_score_midi_path'] = midi_path
@@ -127,7 +135,10 @@ if st.session_state.get('video_loaded', False):
 
             # 6 Show the lyrics and the music score
             # TODO show the lyrics and the music score
-            st.success('Video procesado con éxito.')
+            my_bar = st.progress(100, text="Music score obtained: MIDI and Music XML.")
+            st.success('Video processed sucessfully.')
+            time.sleep(0.5)
+            my_bar.empty()
 
         # Create a variable in the session to store the state
         st.session_state['video_processed'] = True
